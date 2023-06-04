@@ -13,15 +13,19 @@ bash ./Miniconda3-latest-Linux-x86_64.sh -b -p ${COLABFOLDDIR}/conda
 rm Miniconda3-latest-Linux-x86_64.sh
 . "${COLABFOLDDIR}/conda/etc/profile.d/conda.sh"
 export PATH="${COLABFOLDDIR}/conda/condabin:${PATH}"
+
+# Create a new conda environment
 conda create -p $COLABFOLDDIR/colabfold-conda python=3.10 -y
 conda activate $COLABFOLDDIR/colabfold-conda
 conda update -n base conda -y
 conda install -c conda-forge python=3.10 cudnn==8.8.0.121 cudatoolkit==11.8.0 openmm==7.7.0 pdbfixer -y
+
 # Download the updater
 wget -qnc https://raw.githubusercontent.com/YoshitakaMo/localcolabfold/main/update_linux.sh --no-check-certificate
 chmod +x update_linux.sh
 # install alignment tools
 conda install -c conda-forge -c bioconda kalign2=2.04 hhsuite=3.3.0 mmseqs2=14.7e284 -y
+
 # install ColabFold and Jaxlib
 # colabfold-conda/bin/python3.10 -m pip install "colabfold[alphafold] @ git+https://github.com/sokrypton/ColabFold"
 colabfold-conda/bin/python3.10 -m pip install --upgrade pip
