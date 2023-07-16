@@ -1,19 +1,14 @@
 Personal notes while using this repository
 
 # Install
-Common dependencies are already install in Conda base environment. Just need to install with the following command.
-
+Create a conda environment
 ```shell
-bash install_colabbatch_linux.sh
+mamba env create -f environment.yml
 ```
-
-Add to $PATH if need to use more often.
+Install ColabFold & modify associated files
 ```shell
-export PATH="/home/xiaopeng/Desktop/Struct_pred/ref_works/localcolabfold/localcolabfold/colabfold-conda/bin:\$PATH"
-```
-Or activate the environment by using conda
-```shell
-conda activate /home/xiaopeng/Desktop/Struct_pred/ref_works/localcolabfold/localcolabfold/colabfold-conda
+conda activate colabfold-3.10-env
+bash install_colabfold.sh
 ```
 
 Run batch prediction. By default, it uses `alphafold2_ptm` for monomers and `alphafold2_multimer_v3` for complexes

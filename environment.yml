@@ -1,0 +1,57 @@
+name: colabfold-3.10-env
+
+channels:
+  - conda-forge
+  - defaults
+  - anaconda
+  - pytorch     # For torch series
+
+dependencies:
+  - python=3.10
+  - pip
+
+# jupyter-lab dependencies
+  - ipython           
+  - ipywidgets
+  - jupyterlab
+  - jupyterlab-git
+  - jupyterlab-nvdashboard
+  - jupyterlab-lsp
+  - matplotlib
+
+# machine learning & data analysis dependencies
+  - pytorch::pytorch
+  - torchvision
+  - torchaudio
+  - tqdm
+  - numpy          
+  - scipy
+  - pandas
+  - tensorboard
+  - biopython
+  - scikit-learn
+  - numba
+  - biopandas
+  - conda-forge::rdkit
+
+# ColabFold dependencies
+  - conda-forge::cudnn==8.8.0.121 
+  - conda-forge::cudatoolkit==11.8.0
+  - conda-forge::openmm==7.7.0 
+  - conda-forge::pdbfixer
+  - kalign2=2.04 
+  - hhsuite=3.3.0
+  - mmseqs2=14.7e284
+
+  - pip:
+    - -r requirements.txt
+
+# ColabFold dependencies
+# pip install "colabfold[alphafold] @ git+https://github.com/sokrypton/ColabFold"
+# pip install --no-warn-conflicts "colabfold[alphafold-minus-jax] @ git+https://github.com/sokrypton/ColabFold" tensorflow==2.12.0
+ 
+# Use 'Agg' for non-GUI backend
+# cd home/xiaopeng/miniconda3/envs/colabfold-3.10-env/lib/python3.10/site-packages/colabfold
+# sed -i -e "s#from matplotlib import pyplot as plt#import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt#g" plot.py
+# modify the default params directory
+# sed -i -e "s#appdirs.user_cache_dir(__package__ or \"colabfold\")#\"./colabfold_model\"#g" download.py
